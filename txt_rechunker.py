@@ -6,7 +6,7 @@ Created on Fri Nov 11 23:33:02 2016
 """
 
 MAX_LINE_LENGTH = 200
-EOL_CHAR = '\r' #end of line char
+EOL_CHAR = '\n' #end of line char
 
 import os
 import re
@@ -35,8 +35,8 @@ def main():
     for root, dirs, files in os.walk(clean_in_dir):
         try:
             for file in files:
-                with open(os.path.join(root,file)) as inf:
-                    with open(os.path.join(clean_out_dir,file), mode = 'w') as outf:
+                with open(os.path.join(root,file), newline = '') as inf:
+                    with open(os.path.join(clean_out_dir,file), mode = 'w', newline = '') as outf:
                         for line in inf:
                             line = re.sub(r'[\n\r]', r'', line)
                             i = 0
